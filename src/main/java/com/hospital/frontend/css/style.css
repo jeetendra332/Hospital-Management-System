@@ -1,0 +1,31 @@
+body{
+
+    background:#f4f6f9;
+
+    font-family:Arial,sans-serif;
+
+}
+
+.btn{
+
+    border-radius:15px;
+
+    transition:0.3s;
+
+    font-weight:bold;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+
+}
+
+h1{
+
+    font-weight:bold;
+
+}

@@ -1,0 +1,134 @@
+body{
+    background:#f4f7fc;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+/* Header */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:30px 0;
+}
+
+.page-header h2{
+    margin:0;
+    font-weight:700;
+    color:#1f2937;
+}
+
+.page-header p{
+    margin-top:5px;
+    color:#6b7280;
+}
+
+.add-btn{
+    padding:10px 22px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+/* Card */
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+
+.card-body{
+    padding:25px;
+}
+
+/* Table */
+
+.table{
+    margin-bottom:0;
+}
+
+.table thead{
+    background:#0d6efd;
+    color:white;
+}
+
+.table thead th{
+    border:none;
+    padding:15px;
+}
+
+.table tbody td{
+    padding:15px;
+    vertical-align:middle;
+}
+
+.table-hover tbody tr:hover{
+    background:#eef5ff;
+}
+
+/* Buttons */
+
+.btn{
+    border-radius:8px;
+}
+
+.edit-btn{
+    background:#ffc107;
+    color:#000;
+    margin-right:5px;
+}
+
+.edit-btn:hover{
+    background:#e0a800;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:#fff;
+}
+
+.delete-btn:hover{
+    background:#bb2d3b;
+}
+
+/* Modal */
+
+.modal-content{
+    border:none;
+    border-radius:15px;
+}
+
+.modal-header{
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+}
+
+.form-control,
+.form-select{
+    border-radius:8px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    box-shadow:none;
+    border-color:#0d6efd;
+}
+
+textarea{
+    resize:none;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .add-btn{
+        width:100%;
+    }
+
+}

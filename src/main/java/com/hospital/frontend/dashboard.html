@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-hospital"></i>
+        <h2>HMS</h2>
+    </div>
+
+    <ul class="menu">
+
+        <li class="active">
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="patients.html">
+                <i class="fa-solid fa-user-injured"></i>
+                Patients
+            </a>
+        </li>
+
+        <li>
+            <a href="doctors.html">
+                <i class="fa-solid fa-user-doctor"></i>
+                Doctors
+            </a>
+        </li>
+
+        <li>
+            <a href="appointments.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                Appointments
+            </a>
+        </li>
+
+
+
+
+
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- Top Navbar -->
+    <header class="topbar">
+
+
+        <div class="top-right">
+
+            <div class="date">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span id="currentDate"></span>
+            </div>
+
+            <div class="notification">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div class="profile">
+                <img src="https://i.pravatar.cc/40" alt="Admin">
+                <span>Admin</span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- Dashboard Title -->
+    <section class="title-section">
+        <h1>Dashboard</h1>
+        <p>Welcome back, Admin 👋</p>
+    </section>
+
+    <!-- Statistics -->
+    <section class="cards">
+
+        <div class="card blue">
+            <i class="fa-solid fa-user-injured"></i>
+
+            <div>
+                <h3>Total Patients</h3>
+                <h2 id="patientCount">0</h2>
+            </div>
+
+        </div>
+
+        <div class="card green">
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <div>
+                <h3>Total Doctors</h3>
+                <h2 id="doctorCount">0</h2>
+            </div>
+
+        </div>
+
+        <div class="card orange">
+            <i class="fa-solid fa-calendar-check"></i>
+
+            <div>
+                <h3>Appointments</h3>
+                <h2 id="appointmentCount">0</h2>
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <!-- Tables -->
+    <section class="tables">
+
+        <!-- Recent Patients -->
+        <div class="table-card">
+
+            <div class="table-header">
+                <h2>Recent Patients</h2>
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="patientTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Recent Appointments -->
+        <div class="table-card">
+
+            <div class="table-header">
+                <h2>Recent Appointments</h2>
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="appointmentTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
