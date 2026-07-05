@@ -49,7 +49,7 @@ The system helps hospitals manage doctors, patients, appointments, and prescript
 
 ### Login Page
 
-![Login](screenshots/login.png)
+![Login](screenshots/login-page.png)
 
 ---
 
@@ -61,19 +61,19 @@ The system helps hospitals manage doctors, patients, appointments, and prescript
 
 ### Doctor Management
 
-![Doctors](screenshots/doctors.png)
+![Doctors](screenshots/doctors-page.png)
 
 ---
 
 ### Patient Management
 
-![Patients](screenshots/patients.png)
+![Patients](screenshots/patients-page.png)
 
 ---
 
 ### Appointment Management
 
-![Appointments](screenshots/appointments.png)
+![Appointments](screenshots/appointments-page.png)
 
 ---
 
