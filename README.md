@@ -77,12 +77,6 @@ The system helps hospitals manage doctors, patients, appointments, and prescript
 
 ---
 
-### Prescription Management
-
-![Prescriptions](screenshots/prescriptions.png)
-
----
-
 ## 📂 Project Structure
 
 ```
