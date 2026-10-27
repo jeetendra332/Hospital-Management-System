@@ -1,6 +1,8 @@
+
 package com.hospital.config;
 
 import com.hospital.security.JwtAuthenticationFilter;
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -31,9 +33,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration configuration)
-            throws Exception {
-
+            AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
@@ -42,50 +42,70 @@ public class SecurityConfig {
             throws Exception {
 
         http
-
-
-    .cors(Customizer.withDefaults())
+                .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-
 
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
-                                SessionCreationPolicy.STATELESS))
+                                SessionCreationPolicy.STATELESS
+                        )
+                )
 
                 .authorizeHttpRequests(auth -> auth
 
-                        // Public Endpoints
+                        // Allow error and forward dispatches
+                        .dispatcherTypeMatchers(
+                                DispatcherType.ERROR,
+                                DispatcherType.FORWARD
+                        ).permitAll()
+
+                        // Public homepage and frontend resources
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/login.html",
+                                "/register.html",
+                                "/favicon.ico",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
+                                "/assets/**",
+                                "/webjars/**",
+                                "/error"
+                        ).permitAll()
+
+                        // Public authentication endpoints
                         .requestMatchers(
                                 "/users/register",
                                 "/users/login",
+                                "/api/auth/**"
+                        ).permitAll()
+
+                        // Swagger documentation
+                        .requestMatchers(
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
 
-                        // =======================
-                        // DOCTOR MODULE
-                        // =======================
-                        .requestMatchers(HttpMethod.POST, "/api/doctors/**")
-                        .hasRole("ADMIN")
+                        // Doctor module
+                        .requestMatchers(
+                                HttpMethod.POST, "/api/doctors/**"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                HttpMethod.PUT, "/api/doctors/**"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                HttpMethod.DELETE, "/api/doctors/**"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                HttpMethod.GET, "/api/doctors/**"
+                        ).hasAnyRole("ADMIN", "DOCTOR", "RECEPTIONIST")
 
-                        .requestMatchers(HttpMethod.PUT, "/api/doctors/**")
-                        .hasRole("ADMIN")
-
-                        .requestMatchers(HttpMethod.DELETE, "/api/doctors/**")
-                        .hasRole("ADMIN")
-
-                        .requestMatchers(HttpMethod.GET, "/api/doctors/**")
-                        .hasAnyRole("ADMIN", "DOCTOR", "RECEPTIONIST")
-
-                        // =======================
-                        // PATIENT MODULE
-                        // =======================
+                        // Patient module
                         .requestMatchers("/api/patients/**")
                         .hasAnyRole("ADMIN", "RECEPTIONIST")
 
-                        // =======================
-                        // APPOINTMENT MODULE
-                        // =======================
+                        // Appointment module
                         .requestMatchers("/api/appointments/**")
                         .hasAnyRole("ADMIN", "DOCTOR", "RECEPTIONIST")
 
@@ -93,27 +113,22 @@ public class SecurityConfig {
                         .requestMatchers("/api/dashboard/**")
                         .hasRole("ADMIN")
 
-                        // =======================
-                        // PRESCRIPTION MODULE
-                        // =======================
+                        // Prescription module
                         .requestMatchers("/api/prescriptions/**")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
-                        // =======================
-                        // BILL MODULE
-                        // =======================
+                        // Bill module
                         .requestMatchers("/api/bills/**")
                         .hasAnyRole("ADMIN", "RECEPTIONIST")
 
-                        // Any other request
-                        .anyRequest()
-                        .authenticated())
+                        // All other requests require authentication
+                        .anyRequest().authenticated()
+                )
 
                 .addFilterBefore(
                         jwtAuthenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class);
-
-
+                        UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
