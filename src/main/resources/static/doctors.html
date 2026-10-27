@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/doctors.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Doctor Management</h2>
+
+            <p>Manage all hospital doctors</p>
+
+        </div>
+
+        <button class="btn btn-primary add-btn"
+                onclick="newDoctor()"
+                data-bs-toggle="modal"
+                data-bs-target="#doctorModal">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Add Doctor
+
+        </button>
+
+    </div>
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                        </span>
+
+                        <input
+                                type="text"
+                                id="searchInput"
+                                class="form-control"
+                                placeholder="Search Doctor..."
+                                onkeyup="searchDoctor()">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Specialization</th>
+                        <th>Department</th>
+                        <th>Experience</th>
+                        <th width="180">Action</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="doctorTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade"
+     id="doctorModal"
+     tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title">
+
+                    Doctor Details
+
+                </h5>
+
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="modal">
+
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="doctorId">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Doctor Name
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="doctorName"
+                                class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Specialization
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="specialization"
+                                class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Department
+
+                        </label>
+
+                        <input
+                                type="text"
+                                id="department"
+                                class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Experience (Years)
+
+                        </label>
+
+                        <input
+                                type="number"
+                                id="experience"
+                                class="form-control">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+                <button
+                        id="saveButton"
+                        class="btn btn-success"
+                        onclick="saveDoctor()">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Doctor
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/doctors.js"></script>
+
+</body>
+
+</html>
