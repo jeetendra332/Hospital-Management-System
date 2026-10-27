@@ -42,7 +42,7 @@ async function loginUser(event) {
 
             localStorage.setItem("token", token);
 
-            window.location.href = "admin.html";
+            window.location.href = "dashboard.html";
 
         } else {
 
